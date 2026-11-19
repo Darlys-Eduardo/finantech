@@ -1,69 +1,23 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { empresa } from '../data/empresa.js';
+---
 
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Nossa Equipe | FinanTech</title>
-	</head>
-
-	<body>
-		<header>
-			<strong>FinanTech</strong>
-			<nav>
-				<ul>
-					<li><a href="/">Início</a></li>
-					<li><a href="/sobre">Sobre</a></li>
-					<li><a href="/equipe">Equipe</a></li>
-					<li><a href="/contato">Contato</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<main>
-			<section>
-				<h1>Nossa Equipe</h1>
-				<p>
-					Conheça os profissionais responsáveis pelo desenvolvimento,
-					planejamento e organização das soluções financeiras da FinanTech.
-				</p>
-
-				<ul>
-					<li>
-						<h2>Darlys Eduardo de Deus Aguiar</h2>
-						<strong>Desenvolvedor de Software</strong>
-						<p>
-							Responsável pelo desenvolvimento e manutenção dos
-							sistemas, criando soluções tecnológicas práticas
-							e eficientes para os clientes.
-						</p>
-					</li>
-
-					<li>
-						<h2>Rafael Victor Santos</h2>
-						<strong>Analista Financeiro</strong>
-						<p>
-							Responsável pela análise e organização das informações
-							financeiras, contribuindo para o controle de receitas,
-							despesas e pagamentos.
-						</p>
-					</li>
-
-					<li>
-						<h2>Augusto Almeida da Silva</h2>
-						<strong>Gerente de Projetos</strong>
-						<p>
-							Responsável pelo planejamento, acompanhamento e
-							organização dos projetos, garantindo o cumprimento
-						das atividades e dos objetivos da empresa.
-						</p>
-					</li>
-				</ul>
-			</section>
-		</main>
-
-		<footer>
-			<p>&copy; 2026 FinanTech. Todos os direitos reservados.</p>
-		</footer>
-	</body>
-</html>
+<LayoutBase 
+	titulo="Nossa Equipe" 
+	descricao={`Conheça os profissionais por trás da ${empresa.nome}.`}
+>
+	<section>
+		<h1>Nossa Equipe Técnica</h1>
+		<p>Conheça os profissionais responsáveis pelo desenvolvimento, planejamento e organização das soluções financeiras da FinanTech</p>
+		<ul>
+			{empresa.equipe.map((membro) => (
+				<li>
+					<h2>{membro.nome}</h2>
+					<strong>{membro.cargo}</strong>
+					<p>{membro.descricao}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+</LayoutBase>
